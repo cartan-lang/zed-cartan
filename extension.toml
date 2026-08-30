@@ -1,0 +1,20 @@
+# The Zed extension for cartan. Zed compiles the grammar from the
+# tree-sitter-cartan repository named below — a mirror printed from
+# the language's grammar value, refreshed per release — and the
+# language server is `cartan lsp`, a verb of the shipped binary,
+# which src/lib.rs finds on the PATH.
+id = "cartan"
+name = "Cartan"
+description = "Cartan language support: syntax highlighting for .cart documents and ```cart fences in Markdown, and the cartan language server."
+version = "0.3.0"
+schema_version = 1
+authors = ["Jonathan Zrake <jonathan.zrake@gmail.com>"]
+repository = "https://github.com/cartan-lang/zed-cartan"
+
+[language_servers.cartan]
+name = "cartan"
+languages = ["Cartan"]
+
+[grammars.cartan]
+repository = "https://github.com/cartan-lang/tree-sitter-cartan"
+rev = "afc1d8f3eb9e70e4a0f74b3953f6591f59186188"

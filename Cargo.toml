@@ -1,0 +1,21 @@
+# The Zed extension's own crate: the glue that finds the `cartan`
+# binary and starts `cartan lsp` (scratch/ecosystem.md, "One language
+# server serves every editor"). Zed compiles it to wasm32-wasip1 itself
+# when the extension is installed as a dev extension, so it stands
+# outside the workspace — the empty `[workspace]` table is what tells
+# cargo so — and nothing in the workspace builds it.
+[package]
+name = "zed-cartan"
+version = "0.3.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[workspace]
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.7"
