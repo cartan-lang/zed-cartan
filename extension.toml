@@ -17,4 +17,4 @@ languages = ["Cartan"]
 
 [grammars.cartan]
 repository = "https://github.com/cartan-lang/tree-sitter-cartan"
-rev = "afc1d8f3eb9e70e4a0f74b3953f6591f59186188"
+rev = "9ce6dba96bf6e30779c02d38e3de3309f3125d1a"
