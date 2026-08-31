@@ -166,7 +166,7 @@
   "load" "ray" "origin" "direction"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
   "refuse"
-  "complex" "re" "im" "conj" "arg"
+  "complex" "re" "im" "conj" "arg" "dft" "idft"
   "rot" "inv"
   "mat" "diag" "det" "trace" "solve"
   "covec" "metric" "pull"))
