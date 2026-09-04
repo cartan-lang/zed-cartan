@@ -27,6 +27,7 @@
   "while"
   "with"
   "but"
+  "of"
   "if"
   "then"
   "else"
@@ -35,6 +36,7 @@
   "in"
   "fold"
   "reduce"
+  "match"
 ] @keyword
 
 ; controls are heads, not keywords (user's ruling, 2026-08-16): `tap`
@@ -118,9 +120,13 @@
 (port_declaration name: (identifier) @variable.special)
 
 ; a product fiber is a type: its name where it is declared and where
-; it constructs, its components as properties, and a projection's
-; name likewise (R:product-fiber)
+; it constructs, its components as properties, and a component key
+; likewise — `S of u`, and the `S` of `(S: s) := u` (R:component-key)
 (fiber_declaration name: (identifier) @type)
+; a constructor pattern's head names the fiber the value takes, and it
+; mirrors the constructor call — `Cons(d, s, tau) := u` beside
+; `Cons(1.0, 2.0, 3.0)` — so it draws as that call's head draws
+(constructor_pattern head: (identifier) @function)
 (component name: (identifier) @property)
 (product_component name: (identifier) @property)
 (fiber_type name: (identifier) @type)
@@ -128,15 +134,24 @@
 ; alternative — the `None` kind (wishlist item 71, R:absence-value) —
 ; is a fiber type of its own, painted by the pattern above
 (type_annotation alternative: (fiber_type name: (identifier) @type))
-(projection_expression name: (identifier) @property)
+(component_expression key: (component_key (identifier) @property))
+(named_sub_pattern name: (identifier) @property)
 
-(write target: (port_path (identifier) @variable.special))
+; a sum fiber's variants are properties of the fiber that declares
+; them, wherever they stand: the declaration, the constructor's named
+; argument and a `match` arm's head (R:sum-fiber)
+(variant name: (identifier) @property)
+(variant_argument name: (identifier) @property)
+(match_arm variant: (identifier) @property)
+
+(write target: (identifier) @variable.special)
 
 ; configuration keys, which are the only names a call zone carries
 (map_entry key: (identifier) @property)
 
-; a body local, erased at elaboration
-(local name: (identifier) @variable)
+; a body local, erased at elaboration; its left side is a pattern,
+; and a bare name is the pattern that binds the value whole (§2.10)
+(local pattern: (identifier) @variable)
 
 ; a body's own transient port, which the evaluator names per occurrence
 (state_local name: (identifier) @variable.special)
@@ -156,8 +171,10 @@
   "site" "space" "start" "upper" "shift"
   "interior" "exterior" "partition" "tile" "rel" "rebase"
   "sin" "cos" "tan" "asin" "acos" "atan" "atan2"
-  "exp" "log" "log10" "sqrt" "abs"
+  "exp" "log" "log10" "sqrt" "abs" "div" "mod"
+  "bitand" "bitor" "bitxor" "ilog2" "floor"
   "sum" "mean" "min" "max" "clamp" "merge"
+  "sort" "argmin" "argmax" "median" "std" "cumsum" "bincount"
   "vec" "dot" "norm"
   "xextent" "yextent" "zextent"
   "extent" "pad" "width" "center" "frame" "ticks" "fmt"
@@ -166,7 +183,8 @@
   "load" "ray" "origin" "direction"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
   "refuse"
-  "complex" "re" "im" "conj" "arg" "dft" "idft"
+  "complex" "conj" "arg" "dft" "idft"
+  "argsort"
   "rot" "inv"
   "mat" "diag" "det" "trace" "solve"
   "covec" "metric" "pull"))
@@ -219,7 +237,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|port|state|fiber|every|while|with|but|if|then|else|for|each|in|fold|reduce)$"))
+  "^(use|as|port|state|fiber|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))
