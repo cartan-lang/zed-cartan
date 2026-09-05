@@ -180,7 +180,7 @@
   "extent" "pad" "width" "center" "frame" "ticks" "fmt"
   "join" "split" "slice" "trim" "lpad" "rpad"
   "contains" "starts_with" "ends_with"
-  "load" "ray" "origin" "direction"
+  "load" "locked" "ray" "origin" "direction"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
   "refuse"
   "complex" "conj" "arg" "dft" "idft"
