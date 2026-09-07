@@ -6,7 +6,7 @@
 id = "cartan"
 name = "Cartan"
 description = "Cartan language support: syntax highlighting for .cart documents and ```cart fences in Markdown, and the cartan language server."
-version = "0.6.6"
+version = "0.6.7"
 schema_version = 1
 authors = ["Jonathan Zrake <jonathan.zrake@gmail.com>"]
 repository = "https://github.com/cartan-lang/zed-cartan"
@@ -17,4 +17,4 @@ languages = ["Cartan"]
 
 [grammars.cartan]
 repository = "https://github.com/cartan-lang/tree-sitter-cartan"
-rev = "95c2a5d919b8ddd4bd1eaab7f5c964de0d5b0f6b"
+rev = "d4c3b035d17cfd8618bfa6639c48fb7b346b93d5"
