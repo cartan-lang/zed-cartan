@@ -23,6 +23,7 @@
   "port"
   "state"
   "fiber"
+  "affine"
   "every"
   "while"
   "with"
@@ -149,6 +150,10 @@
 ; configuration keys, which are the only names a call zone carries
 (map_entry key: (identifier) @property)
 
+; a Map pattern's key names the entry it reads, as a literal's key
+; names the entry it writes, so the two draw alike (§2.10)
+(map_sub_pattern key: (identifier) @property)
+
 ; a body local, erased at elaboration; its left side is a pattern,
 ; and a bare name is the pattern that binds the value whole (§2.10)
 (local pattern: (identifier) @variable)
@@ -169,18 +174,18 @@
   "array" "concat" "append"
   "reshape" "flatten" "transpose" "swapaxes" "shape" "len"
   "site" "space" "start" "upper" "shift"
-  "interior" "exterior" "partition" "tile" "rel" "rebase"
+  "interior" "exterior" "partition" "tile" "rel"
   "sin" "cos" "tan" "asin" "acos" "atan" "atan2"
   "exp" "log" "log10" "sqrt" "abs" "div" "mod"
   "bitand" "bitor" "bitxor" "ilog2" "floor"
-  "sum" "mean" "min" "max" "clamp" "merge"
+  "sum" "mean" "min" "max" "clamp" "merge" "keys" "values"
   "sort" "argmin" "argmax" "median" "std" "cumsum" "bincount"
   "vec" "dot" "norm"
   "xextent" "yextent" "zextent"
   "extent" "pad" "width" "center" "frame" "ticks" "fmt"
   "join" "split" "slice" "trim" "lpad" "rpad"
   "contains" "starts_with" "ends_with"
-  "load" "locked" "ray" "origin" "direction"
+  "load"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
   "refuse"
   "complex" "conj" "arg" "dft" "idft"
@@ -201,7 +206,7 @@
 ; that states its elements in a payload
 ((identifier) @constructor
  (#any-of? @constructor
-  "block" "viridis"
+  "block"
   "canvas1d" "canvas2d" "canvas3d"))
 
 ; a name standing for the literal an author would have written. The
@@ -237,7 +242,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|port|state|fiber|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
+  "^(use|as|port|state|fiber|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))
