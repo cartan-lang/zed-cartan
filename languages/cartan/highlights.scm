@@ -176,7 +176,7 @@
   "site" "space" "start" "upper" "shift"
   "interior" "exterior" "partition" "tile" "rel"
   "sin" "cos" "tan" "asin" "acos" "atan" "atan2"
-  "exp" "log" "log10" "sqrt" "abs" "div" "mod"
+    "exp" "log" "log10" "sqrt" "abs" "sign" "div" "mod"
   "bitand" "bitor" "bitxor" "ilog2" "floor"
   "sum" "mean" "min" "max" "clamp" "merge" "keys" "values"
   "sort" "argmin" "argmax" "median" "std" "cumsum" "bincount"
