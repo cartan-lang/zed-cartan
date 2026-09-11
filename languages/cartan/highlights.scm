@@ -9,6 +9,19 @@
 (number) @number
 (boolean) @boolean
 
+; `f"e = {e:.3}"` — the tagged literal (§2.1): its text draws as a
+; string and its holes as the code they are, so the delimiters, the
+; chunks and the escapes take the string capture and each hole's
+; expression is painted by the patterns below
+(template_string "f\"" @string)
+(template_string "f\"\"\"" @string)
+(template_string "\"" @string)
+(template_string "\"\"\"" @string)
+(chunk) @string
+(raw_chunk) @string
+(escape) @string
+(format_spec) @property
+
 ; `none` — the None unit kind's sole value (builtins.md R50), dressed
 ; as the truth literals are
 (none) @boolean
@@ -20,6 +33,7 @@
 [
   "use"
   "as"
+  "module"
   "port"
   "state"
   "fiber"
@@ -67,6 +81,7 @@
   "="
   ".."
   "..="
+  "<>"
 ] @operator
 
 ; the two arrows that are not operators over values: a write and a local
@@ -91,10 +106,12 @@
   "}"
 ] @punctuation.bracket
 
+; `::` separates a namespace from the name inside it, as `,` and `:`
+; separate the parts of a run: a delimiter, not an operator over values
 [
   ","
   ":"
-  "."
+  "::"
 ] @punctuation.delimiter
 
 ; ---------------------------------------------------------------------
@@ -103,11 +120,23 @@
 
 (identifier) @variable
 
-; `fig.panel` — the namespace a `use` bound, and the name inside it.
+; `fig::panel` — the namespace a `use` bound, and the name inside it.
 ; The `as` of the `use` line draws the same way, as a port declaration
-; draws the way a write to that port does.
+; draws the way a write to that port does, and a bare head is the
+; namespace itself.
 (use_declaration alias: (identifier) @namespace)
+(use_declaration namespace: (identifier) @namespace)
 (qualified_identifier namespace: (identifier) @namespace)
+
+; the names a `use` line imports, each a name of this document after
+; the line (§10)
+(import_list name: (identifier) @variable)
+
+; a module: its name where it is declared, and each hole a name the
+; body reads — a function-shaped hole draws as the function it takes
+(module_definition name: (identifier) @type)
+(hole name: (identifier) @variable)
+(hole_binding name: (identifier) @variable)
 
 ; a call head, before the registry says which kind it is
 (call_expression function: (identifier) @function)
@@ -183,7 +212,7 @@
   "vec" "dot" "norm"
   "xextent" "yextent" "zextent"
   "extent" "pad" "width" "center" "frame" "ticks" "fmt"
-  "join" "split" "slice" "trim" "lpad" "rpad"
+  "str" "join" "split" "slice" "trim" "lpad" "rpad"
   "contains" "starts_with" "ends_with"
   "load"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
@@ -242,7 +271,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|port|state|fiber|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
+  "^(use|as|module|port|state|fiber|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))
