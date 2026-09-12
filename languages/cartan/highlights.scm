@@ -37,6 +37,7 @@
   "port"
   "state"
   "fiber"
+  "struct"
   "affine"
   "every"
   "while"
@@ -153,6 +154,10 @@
 ; it constructs, its components as properties, and a component key
 ; likewise — `S of u`, and the `S` of `(S: s) := u` (R:component-key)
 (fiber_declaration name: (identifier) @type)
+; a struct alias is a type too: it names a record's entries and stands
+; wherever a type annotation stands (R:stated-fiber)
+(struct_declaration name: (identifier) @type)
+(struct_entry name: (identifier) @property)
 ; a constructor pattern's head names the fiber the value takes, and it
 ; mirrors the constructor call — `Cons(d, s, tau) := u` beside
 ; `Cons(1.0, 2.0, 3.0)` — so it draws as that call's head draws
@@ -217,7 +222,7 @@
   "load"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
   "refuse"
-  "complex" "conj" "arg" "dft" "idft"
+  "complex" "frac" "conj" "arg" "dft" "idft"
   "argsort"
   "rot" "inv"
   "mat" "diag" "det" "trace" "solve"
@@ -271,7 +276,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|module|port|state|fiber|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
+  "^(use|as|module|port|state|fiber|struct|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))
