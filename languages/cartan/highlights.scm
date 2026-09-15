@@ -208,7 +208,7 @@
   "array" "concat" "append"
   "reshape" "flatten" "transpose" "swapaxes" "shape" "len"
   "site" "space" "start" "upper" "shift"
-  "interior" "exterior" "partition" "tile" "rel"
+  "interior" "exterior" "partition" "tile"
   "sin" "cos" "tan" "asin" "acos" "atan" "atan2"
     "exp" "log" "log10" "sqrt" "abs" "sign" "div" "mod"
   "bitand" "bitor" "bitxor" "ilog2" "floor"
