@@ -33,12 +33,12 @@
 [
   "use"
   "as"
-  "module"
-  "port"
+  "namespace"
+  "param"
   "state"
   "fiber"
   "struct"
-  "affine"
+  "torsor"
   "every"
   "while"
   "with"
@@ -133,9 +133,9 @@
 ; the line (§10)
 (import_list name: (identifier) @variable)
 
-; a module: its name where it is declared, and each hole a name the
+; a namespace: its name where it is declared, and each hole a name the
 ; body reads — a function-shaped hole draws as the function it takes
-(module_definition name: (identifier) @type)
+(namespace_definition name: (identifier) @type)
 (hole name: (identifier) @variable)
 (hole_binding name: (identifier) @variable)
 
@@ -276,7 +276,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|module|port|state|fiber|struct|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
+  "^(use|as|namespace|module|param|port|state|fiber|struct|torsor|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))

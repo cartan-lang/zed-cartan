@@ -1,5 +1,5 @@
 (port_declaration
-  ["port" "state"] @context
+  ["param" "state"] @context
   name: (identifier) @name) @item
 
 (function_definition
