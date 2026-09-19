@@ -207,7 +207,7 @@
  (#any-of? @function.builtin
   "array" "concat" "append"
   "reshape" "flatten" "transpose" "swapaxes" "shape" "len"
-  "site" "space" "start" "upper" "shift"
+  "site" "space" "start" "upper" "periodic" "shift"
   "interior" "exterior" "partition" "tile"
   "sin" "cos" "tan" "asin" "acos" "atan" "atan2"
     "exp" "log" "log10" "sqrt" "abs" "sign" "div" "mod"
@@ -276,7 +276,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|namespace|module|param|port|state|fiber|struct|torsor|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce)$"))
+  "^(use|as|namespace|module|param|state|fiber|struct|torsor|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce|periodic)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))
