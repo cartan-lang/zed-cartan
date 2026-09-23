@@ -219,7 +219,7 @@
   "extent" "pad" "width" "center" "frame" "ticks" "fmt"
   "str" "join" "split" "slice" "trim" "lpad" "rpad"
   "contains" "starts_with" "ends_with"
-  "load"
+  "load" "locked"
   "interp" "step" "rgb" "rgba" "oklch" "hex" "mix"
   "refuse"
   "complex" "frac" "conj" "arg" "dft" "idft"
@@ -276,7 +276,7 @@
 
 ((identifier) @keyword
  (#match? @keyword
-  "^(use|as|namespace|module|param|state|fiber|struct|torsor|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce|periodic)$"))
+  "^(use|as|namespace|module|param|state|fiber|struct|torsor|affine|every|while|with|but|of|if|then|else|match|for|each|in|fold|reduce|periodic|locked|when)$"))
 
 ((identifier) @keyword.operator
  (#match? @keyword.operator "^(and|or|not)$"))
