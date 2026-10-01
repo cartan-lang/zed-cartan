@@ -205,10 +205,10 @@
 ; `crates/conformance/tests/docs.rs` holds the two to each other.
 ((call_expression function: (identifier) @function.builtin)
  (#any-of? @function.builtin
-  "array" "concat" "append"
-  "reshape" "flatten" "transpose" "swapaxes" "shape" "len"
+  "array" "append"
+  "transpose" "shape" "len"
   "site" "space" "start" "upper" "periodic" "shift"
-  "interior" "exterior" "partition" "tile"
+  "interior" "exterior"
   "sin" "cos" "tan" "asin" "acos" "atan" "atan2"
     "exp" "log" "log10" "sqrt" "abs" "sign" "div" "mod"
   "bitand" "bitor" "bitxor" "ilog2" "floor"

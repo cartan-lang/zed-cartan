@@ -15,7 +15,7 @@ Hover over a binding and the first lines state what the analysis
 assigned it: the kind in the annotation grammar, the floor an update
 states where one does, and the targets that admit its cone, grouped by
 the widths they admit. The full reading is the command line's —
-`cartan check FILE SYMBOL` — and the editor stays short so that it
+`cartan check FILE:SYMBOL` — and the editor stays short so that it
 does not distract.
 
 The whole report is offered at the cursor as three code actions,
